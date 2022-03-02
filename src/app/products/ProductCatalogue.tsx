@@ -23,6 +23,8 @@ export const ProductCatalogue = () => {
 
   return (
     <>
+      <Link to={AppRoute.login}> Login </Link>
+
       <Grid container rowSpacing={2} columns={4}>
         {products.map((product) => (
           <Grid item xs={1}>
@@ -35,7 +37,6 @@ export const ProductCatalogue = () => {
           </Grid>
         ))}
       </Grid>
-      {/* <Link to={AppRoute.login}> Login </Link> */}
     </>
   );
 };

@@ -41,6 +41,17 @@ const RatingStars = styled(Rating)({
   },
 });
 
+const PromoFlag = styled(Typography)({
+  backgroundColor: "#F9A52B",
+  color: "#FFFFFF",
+  position: "absolute",
+  textAlign: "center",
+  width: "75px",
+  marginTop: "16px",
+  fontWeight: 500,
+  fontSize: 14,
+});
+
 export interface ProductCardProps {
   description: string;
   image: string;
@@ -56,16 +67,8 @@ export const ProductCard: VFC<ProductCardProps> = ({
 }) => {
   return (
     <Card sx={{ width: 288, height: 400 }}>
-      <Badge
-        color="secondary"
-        badgeContent={"promo"}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-      >
-        <CardMedia component="img" height="170" image={image} />
-      </Badge>
+      <PromoFlag>Promo</PromoFlag>
+      <CardMedia component="img" height="170" image={image} />
       <CardContent>
         <Title gutterBottom>{name}</Title>
         <Description variant="body2">{description}</Description>
