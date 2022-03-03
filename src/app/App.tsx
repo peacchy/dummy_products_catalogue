@@ -1,13 +1,11 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { AppRoutes } from "routing/AppRoutes";
-import { TopNav } from "./topnav/TopNav";
-import { TopNavNew } from "./topnav/TopNavNew";
-import { ProductCard } from "./product/ProductCard";
+import { ProductCard } from "./components/product/ProductCard";
+import { TopNavNew } from "./containers/topnav/TopNavNew";
 
 const TESTDIV = styled("div")(({ theme }) => ({
   backgroundColor: "#F2F2F2",
-  height: "100px",
 }));
 
 export const App = () => {
@@ -16,7 +14,6 @@ export const App = () => {
       {/* <TopNav /> */}
       {/* <div>TEST</div> */}
       <TopNavNew />
-      <TESTDIV />
       {/* <Product
         description="Quam soluta et consequuntur velit ipsa sint facere occaecati fugiat."
         image="https://picsum.photos/640/480?random=4946"
