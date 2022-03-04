@@ -1,5 +1,6 @@
 import { Button, styled, TextField, Typography } from "@mui/material";
-import React from "react";
+import { UserContext } from "providers/UserProvider";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { AppRoute } from "routing/AppRoute.enum";
@@ -31,17 +32,36 @@ const ForgotPassword = styled(Typography)({
   fontSize: 14,
 });
 
-export const Login = () => {
+export const Login: React.VFC = () => {
+  const { setUser } = useContext(UserContext);
+
+  const [username, setUsername] = useState<string>();
+
+  const handleLogin = () => {
+    if (username) {
+      setUser(username);
+    }
+  };
+
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+
   return (
     <LoginPage>
       <img src="https://picsum.photos/604/1024"></img>
       <LoginPanel>
-        <Link to={AppRoute.home}>Products page</Link>
         <Header>Login</Header>
         <form>
           <div>
             <Typography>Username:</Typography>
-            <Input name="username" size="small" placeholder="Enter username" />
+            <Input
+              name="username"
+              size="small"
+              placeholder="Enter username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
           </div>
           <div>
             <Typography>Password:</Typography>
@@ -52,9 +72,15 @@ export const Login = () => {
               placeholder="Enter password"
             />
           </div>
-          <LoginButton type="submit" variant="contained">
-            Log in
-          </LoginButton>
+          <Link to={AppRoute.home} style={{ textDecoration: "none" }}>
+            <LoginButton
+              type="submit"
+              variant="contained"
+              onClick={handleLogin}
+            >
+              Log in
+            </LoginButton>
+          </Link>
         </form>
         <ForgotPassword>Forgot password?</ForgotPassword>
       </LoginPanel>

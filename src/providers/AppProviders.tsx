@@ -1,6 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { createTheme, ThemeProvider } from "@mui/material";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { UserProvider } from "./UserProvider";
 
-import { AppProvidersProps } from './AppProviders.types';
+const theme = createTheme({
+  typography: {
+    fontFamily: `Nunito, sans-serif`,
+    fontWeightRegular: 600,
+  },
+});
 
-export const AppProviders = ({ children }: AppProvidersProps) => <Router>{children}</Router>;
+export const AppProviders: React.FC = ({ children }) => (
+  <ThemeProvider theme={theme}>
+    <UserProvider>
+      <Router>{children}</Router>
+    </UserProvider>
+  </ThemeProvider>
+);

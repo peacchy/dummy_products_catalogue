@@ -2,13 +2,12 @@ import React from "react";
 import { VFC } from "react";
 import { styled } from "@mui/material/styles";
 import {
-  Badge,
+  Box,
   Button,
   Card,
-  CardActions,
-  CardContent,
   CardMedia,
   Rating,
+  Stack,
   Typography,
 } from "@mui/material";
 
@@ -21,7 +20,6 @@ const ActionButton = styled(Button)({
 const Title = styled(Typography)({
   fontSize: 18,
   fontWeight: 600,
-  //   fontFamily: "Nunito",
   color: "#1A1B1D",
 });
 
@@ -32,9 +30,9 @@ const Description = styled(Typography)({
 });
 
 const RatingStars = styled(Rating)({
-  fontSize: 14,
+  fontSize: 15,
   "& .MuiRating-icon": {
-    margin: "5px",
+    margin: "0 4px",
   },
   "& .MuiRating-iconFilled": {
     color: "#F9A52B",
@@ -46,8 +44,9 @@ const PromoFlag = styled(Typography)({
   color: "#FFFFFF",
   position: "absolute",
   textAlign: "center",
-  width: "75px",
-  marginTop: "16px",
+  width: 75,
+  height: 24,
+  top: 16,
   fontWeight: 500,
   fontSize: 14,
 });
@@ -65,20 +64,31 @@ export const ProductCard: VFC<ProductCardProps> = ({
   name,
   rating,
 }) => {
+  const cardHeight = 400;
+  const mediaHeight = 170;
+  const contentPaddingTop = 16;
+  const contentPaddingBottom = 24;
+  const contentHeight =
+    cardHeight - (mediaHeight + (contentPaddingBottom + contentPaddingTop));
+
   return (
-    <Card sx={{ width: 288, height: 400 }}>
+    <Card sx={{ width: 288, height: cardHeight, position: "relative" }}>
       <PromoFlag>Promo</PromoFlag>
-      <CardMedia component="img" height="170" image={image} />
-      <CardContent>
-        <Title gutterBottom>{name}</Title>
-        <Description variant="body2">{description}</Description>
-      </CardContent>
-      <CardContent>
-        <RatingStars name="read-only" value={rating} readOnly />
-      </CardContent>
-      <CardActions>
-        <ActionButton variant="contained">Show details</ActionButton>
-      </CardActions>
+      <CardMedia component="img" height={mediaHeight} image={image} />
+      <Stack
+        height={`${contentHeight}px`}
+        justifyContent="space-between"
+        padding={`${contentPaddingTop}px 16px ${contentPaddingBottom}px`}
+      >
+        <Stack>
+          <Title gutterBottom>{name}</Title>
+          <Description variant="body2">{description}</Description>
+        </Stack>
+        <Stack spacing="18px">
+          <RatingStars name="read-only" value={rating} readOnly />
+          <ActionButton variant="contained">Show details</ActionButton>
+        </Stack>
+      </Stack>
     </Card>
   );
 };

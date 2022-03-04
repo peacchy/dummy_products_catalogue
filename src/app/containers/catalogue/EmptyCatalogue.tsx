@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Paper, styled, Typography } from "@mui/material";
 
-import { ReactComponent as NoteIcon } from "../../assets/Note.svg";
+import { ReactComponent as NoteIcon } from "../../../assets/Note.svg";
 
 const Empty = styled(Paper)(({ theme }) => ({
   borderRadius: "8px",
