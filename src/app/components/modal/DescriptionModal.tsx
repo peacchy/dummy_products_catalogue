@@ -45,40 +45,33 @@ interface DescriptionModalProps {
   description: string;
   image: string;
   name: string;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export const DescriptionModal: VFC<DescriptionModalProps> = ({
   description,
   image,
   name,
+  isOpen,
+  onClose,
 }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <ModalWindow
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Content>
-          <CloseButton>
-            <IconButton size="small">
-              <CloseIcon />
-            </IconButton>
-          </CloseButton>
-          <CardMedia component="img" height="354" image={image} />
-          <Information>
-            <Typography gutterBottom variant="h5" component="div">
-              {name}
-            </Typography>
-            <Description variant="body2">{description}</Description>
-          </Information>
-        </Content>
-      </ModalWindow>
-    </div>
+    <ModalWindow open={isOpen} onClose={onClose}>
+      <Content>
+        <CloseButton>
+          <IconButton size="small">
+            <CloseIcon />
+          </IconButton>
+        </CloseButton>
+        <CardMedia component="img" height="354" image={image} />
+        <Information>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+          <Description variant="body2">{description}</Description>
+        </Information>
+      </Content>
+    </ModalWindow>
   );
 };

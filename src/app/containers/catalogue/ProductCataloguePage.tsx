@@ -29,7 +29,7 @@ export const ProductCataloguePage: React.VFC = () => {
       <ProductCatalogueHeader>
         <ProductCatalogueFilters />
       </ProductCatalogueHeader>
-      <CatalogueWrapper>
+      <CatalogueWrapper alignItems="center">
         <ProductCatalogue products={products} />
       </CatalogueWrapper>
     </>
