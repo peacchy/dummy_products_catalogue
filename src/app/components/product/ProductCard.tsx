@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 import { Button, Card, Rating, Stack, Typography } from "@mui/material";
 import { ProductImage } from "./ProductImage";
 import { DescriptionModal } from "../modal/DescriptionModal";
-import { margin } from "@mui/system";
 
 const ActionButton = styled(Button)({
   width: "100%",
@@ -14,8 +13,14 @@ const ActionButton = styled(Button)({
 
 const DisabledButton = styled(Button)({
   width: "100%",
-  backgroundColor: "#9194A5",
   textTransform: "none",
+  // color: "white",
+  // backgroundColor: "#9194A5",
+
+  // "& .Mui-disabled": {
+  //   color: "white",
+  //   backgroundColor: "#9194A5",
+  // },
 });
 
 const Title = styled(Typography)({

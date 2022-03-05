@@ -1,3 +1,18 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24" height="24" rx="4" fill="#4460F7"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24" xml:space="preserve">
+<desc>Created with Fabric.js 4.2.0</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 12 12)" id="9c79dec0-3652-4923-a5ff-bf10db493a86"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  x="-12" y="-12" rx="0" ry="0" width="24" height="24" />
+</g>
+<g transform="matrix(Infinity NaN NaN Infinity 0 0)" id="02f33271-3690-4e98-bd14-4ba04b12a32f"  >
+</g>
+<g transform="matrix(1 0 0 1 12 12)" id="a9a703ca-fbab-4524-965e-db58018bda89"  >
+	<image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAIdJREFUSEtjZGBgYHCL/2r8j5G5loHhvxsDAwMnSIwC8J2BgXEX0/+/zbsWcp9lhBjOdJgKBqO76TvT/3+2jC4JPzYwMPz3p8DFeLQybmR0Sfj+jQauh1n6HWTBf9q4HmLqqAUEQ3c0iEaDiGAIEFQwmopGg4hgCBBUQI8Kh8ZVJs0rfVo3WwCI910NsYyvtgAAAABJRU5ErkJggg==" x="-12" y="-12" width="24" height="24"></image>
+</g>
+<g transform="matrix(1 0 0 1 12 12)" id="8212d043-5286-4dc7-8f73-3c2cb7f5cb6e"  >
+	<image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAYAAACALL/6AAAAAXNSR0IArs4c6QAAAHdJREFUKFOVkEERwzAMBPcYFEIghEEKoWHQMiuDUCgEM7qOM5YnybiJq4deu5JO4o+yfVMvb/sNDF1CgR/A/VLYwVI6FY5wPl+2n8Ak6bXN04JDGIEPsIT0C16F3GxXqWyZ14BSOn6xZthImWnCdUNMKRKtycF8AUnuNwIgX8xmAAAAAElFTkSuQmCC" x="-6" y="-5" width="12" height="10"></image>
+</g>
 </svg>

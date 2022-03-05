@@ -15,7 +15,7 @@ export const ProductCataloguePage: React.VFC = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProducts()
+    getProducts({})
       .then((response) => {
         const newProducts = response.items.map(mapToProduct);
         setProducts(newProducts);
