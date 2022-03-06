@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 import { UserMenu } from "../user/UserMenu";
 import { UserContext } from "providers/UserProvider";
 import { useContext } from "react";
@@ -15,13 +15,14 @@ const Logo = styled(Typography)(({ theme }) => ({
 }));
 
 export const ProductCatalogueHeader: React.FC = ({ children }) => {
-  const { user } = useContext(UserContext);
+  const { user, clearUser } = useContext(UserContext);
 
   return (
-    <Bar direction="row" alignItems="center" justifyContent="space-between">
+    <Bar direction="row" alignItems="center">
       <Logo noWrap>join.tsh.io</Logo>
       {children}
-      {user ? <UserMenu /> : <LoginButton />}
+      <Box flexGrow={1} />
+      {user ? <UserMenu user={user} onLogout={clearUser} /> : <LoginButton />}
     </Bar>
   );
 };

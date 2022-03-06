@@ -1,6 +1,10 @@
 import * as React from "react";
-import { OutlinedInput } from "@mui/material";
+import { OutlinedInput, styled } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
+
+const SearchBar = styled(OutlinedInput)(({ theme }) => ({
+  width: "392px",
+}));
 
 interface SearchProps {
   value: string;
@@ -13,7 +17,7 @@ export const Search: React.VFC<SearchProps> = ({ value, onChange }) => {
   };
 
   return (
-    <OutlinedInput
+    <SearchBar
       placeholder="Search"
       value={value}
       onChange={handleChange}

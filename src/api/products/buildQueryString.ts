@@ -1,9 +1,3 @@
-export interface Filters {
-  search?: string;
-  active?: true;
-  promo?: true;
-}
-
 // export const buildQueryString = (filters: Filters): string => {
 //   const entries = Object.entries(filters);
 
@@ -21,7 +15,9 @@ export const buildQueryString = <T>(value: T): string => {
     throw new Error("");
   }
 
-  const entries = Object.entries(value);
+  const entries = Object.entries(value).filter(
+    ([key, value]) => value !== undefined
+  );
 
   if (entries.length === 0) return "";
 

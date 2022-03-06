@@ -25,7 +25,7 @@ export const ProductCatalogue: React.VFC<ProductCatalogueProps> = ({
       justifyContent="center"
     >
       {products.map((product) => (
-        <Grid item xs={1}>
+        <Grid key={product.id} item xs={1}>
           <ProductCard
             description={product.description}
             image={product.image}

@@ -1,46 +1,66 @@
-import { buildQueryString, Filters } from "../buildQueryString";
+import { buildQueryString } from "../buildQueryString";
 
 it("should build query string from object with string parameter", () => {
-  const quesryString = buildQueryString({
+  const queryString = buildQueryString({
     search: "value",
   });
 
-  expect(quesryString).toMatch("?search=value");
+  expect(queryString).toEqual("?search=value");
 });
 
 it("should build query string from object with boolean parameter", () => {
-  const quesryString = buildQueryString({
+  const queryString = buildQueryString({
     active: true,
   });
 
-  expect(quesryString).toMatch("?active=true");
+  expect(queryString).toEqual("?active=true");
 });
 
 it("should build query string from object with number parameter", () => {
-  const quesryString = buildQueryString({
+  const queryString = buildQueryString({
     page: 1,
   });
 
-  expect(quesryString).toMatch("?page=1");
+  expect(queryString).toEqual("?page=1");
 });
 
 it("should build query string from object with many parameters", () => {
-  const quesryString = buildQueryString({
+  const queryString = buildQueryString({
     search: "value",
     active: true,
     promo: true,
     page: 1,
   });
 
-  expect(quesryString).toMatch("?search=value&active=true&promo=true&page=1");
+  expect(queryString).toEqual("?search=value&active=true&promo=true&page=1");
 });
 
 it("should return empty string for object without any parameters", () => {
-  const quesryString = buildQueryString({});
+  const queryString = buildQueryString({});
 
-  expect(quesryString).toMatch("");
+  expect(queryString).toEqual("");
 });
 
 it("should throw error for function paramter type other than object", () => {
   expect(() => buildQueryString(1)).toThrowError("");
+});
+
+it("should return query sting without parameters set to undefined", () => {
+  const queryString = buildQueryString({
+    search: "value",
+    active: undefined,
+    promo: undefined,
+    page: 1,
+  });
+
+  expect(queryString).toEqual("?search=value&page=1");
+});
+
+it("should return empty string for object with parameters set to undefined", () => {
+  const queryString = buildQueryString({
+    active: undefined,
+    promo: undefined,
+  });
+
+  expect(queryString).toEqual("");
 });
