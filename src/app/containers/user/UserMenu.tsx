@@ -1,8 +1,14 @@
 import { AccountCircle } from "@mui/icons-material";
-import { IconButton, Menu, MenuItem } from "@mui/material";
+import { Avatar, IconButton, Menu, MenuItem } from "@mui/material";
+import { User } from "app/models/User";
 import React from "react";
 
-export const UserMenu: React.VFC = () => {
+interface UserMenuProps {
+  user: User;
+  onLogout: () => void;
+}
+
+export const UserMenu: React.VFC<UserMenuProps> = ({ user, onLogout }) => {
   const menuId = "primary-search-account-menu";
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -20,42 +26,36 @@ export const UserMenu: React.VFC = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleLogout = () => {
+    onLogout();
     setAnchorEl(null);
     handleMobileMenuClose();
   };
 
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
-  );
-
   return (
     <>
-      <IconButton
-        size="large"
-        edge="end"
+      <Avatar
+        alt={user.username}
+        src={user.avatar}
         onClick={handleProfileMenuOpen}
-        color="inherit"
+      />
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        id={menuId}
+        keepMounted
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        open={isMenuOpen}
+        onClose={handleLogout}
       >
-        <AccountCircle />
-      </IconButton>
-      {renderMenu}
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </Menu>
     </>
   );
 };

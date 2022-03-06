@@ -1,6 +1,8 @@
 import { Button, styled, TextField, Typography } from "@mui/material";
+import { loginUser } from "api/login/loginUser";
+import { ResponseErrorDto } from "api/ResponseErrorDto";
 import { UserContext } from "providers/UserProvider";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { AppRoute } from "routing/AppRoute.enum";
@@ -33,18 +35,31 @@ const ForgotPassword = styled(Typography)({
 });
 
 export const Login: React.VFC = () => {
-  const { setUser } = useContext(UserContext);
+  const { saveUser } = useContext(UserContext);
 
-  const [username, setUsername] = useState<string>();
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleLogin = () => {
-    if (username) {
-      setUser(username);
-    }
+    loginUser({ username, password })
+      .then((response) => {
+        saveUser({
+          username: response.user.username,
+          avatar: response.user.avatar,
+          accessToken: response.access_token,
+        });
+      })
+      .catch((error: ResponseErrorDto) => {
+        console.log(error);
+      });
   };
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
   };
 
   return (
@@ -70,6 +85,8 @@ export const Login: React.VFC = () => {
               type="password"
               size="small"
               placeholder="Enter password"
+              value={password}
+              onChange={handlePasswordChange}
             />
           </div>
           <Link to={AppRoute.home} style={{ textDecoration: "none" }}>
