@@ -16,6 +16,8 @@ export const ProductCataloguePage: React.VFC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [activeValue, setActiveValue] = useState<boolean>(false);
   const [promoValue, setPromoValue] = useState<boolean>(false);
+  const [totalPages, setTotalPagesValue] = useState<number>(0);
+  const [currentPageValue, setCurrentPageValue] = useState<number>(1);
 
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -24,15 +26,16 @@ export const ProductCataloguePage: React.VFC = () => {
       search: searchValue,
       active: activeValue ? true : undefined,
       promo: promoValue ? true : undefined,
-      page: 1,
+      page: currentPageValue,
       limit: 8,
     })
       .then((response) => {
         const newProducts = response.items.map(mapToProduct);
         setProducts(newProducts);
+        setTotalPagesValue(response.meta.totalPages);
       })
       .catch((error) => console.error(error));
-  }, [searchValue, activeValue, promoValue]);
+  }, [searchValue, activeValue, promoValue, currentPageValue]);
 
   return (
     <>
@@ -47,7 +50,11 @@ export const ProductCataloguePage: React.VFC = () => {
         />
       </ProductCatalogueHeader>
       <CatalogueWrapper alignItems="center">
-        <PaginationCatalogue />
+        <PaginationCatalogue
+          totalPages={totalPages}
+          value={currentPageValue}
+          onChange={setCurrentPageValue}
+        />
         <ProductCatalogue products={products} />
       </CatalogueWrapper>
     </>
