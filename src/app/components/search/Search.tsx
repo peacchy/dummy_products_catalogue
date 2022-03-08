@@ -3,7 +3,7 @@ import { OutlinedInput, styled } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 
 const SearchBar = styled(OutlinedInput)(({ theme }) => ({
-  width: "392px",
+  // width: "392px",
 }));
 
 interface SearchProps {

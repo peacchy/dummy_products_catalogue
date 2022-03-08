@@ -1,4 +1,4 @@
-export const generatePaginationNumbers = (
+export const generatePaginationValues = (
   totalPages: number,
   currentPage: number
 ): (number | "...")[] => {

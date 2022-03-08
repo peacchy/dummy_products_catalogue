@@ -1,17 +1,28 @@
 import React from "react";
-import {
-  Button,
-  Pagination,
-  PaginationItem,
-  Stack,
-  styled,
-  Typography,
-} from "@mui/material";
-import { generatePaginationNumbers } from "./generatePaginationNumbers";
+import { Button, Stack, styled, Typography } from "@mui/material";
+import { generatePaginationValues } from "./generatePaginationValues";
 
-const Page = styled(PaginationItem)(({ theme }) => ({
-  "& .Mui-selected": {
-    color: "blue",
+interface PageButtonProps {
+  isCurrent: boolean;
+}
+
+const PageButton = styled(Button)<PageButtonProps>(({ isCurrent }) => ({
+  color: isCurrent ? "red" : "#1A1B1D",
+  minWidth: "10px",
+  "&.MuiButtonBase-root:hover": {
+    backgroundColor: "transparent",
+  },
+}));
+
+const HiddenPages = styled(Typography)(({ theme }) => ({
+  padding: "0px 16px",
+}));
+
+const NavigationButton = styled(Button)(({ theme }) => ({
+  textTransform: "none",
+  color: "#1A1B1D",
+  "&.MuiButtonBase-root:hover": {
+    backgroundColor: "transparent",
   },
 }));
 
@@ -26,7 +37,7 @@ export const PaginationCatalogue: React.VFC<PaginationCatalogueProps> = ({
   value,
   onChange,
 }) => {
-  const handleChange = (event: any, value: number) => {
+  const handleChange = (value: number) => {
     onChange(value);
   };
 
@@ -38,52 +49,44 @@ export const PaginationCatalogue: React.VFC<PaginationCatalogueProps> = ({
     onChange(totalPages);
   };
 
-  const numbers = generatePaginationNumbers(totalPages, value);
+  const numbers = generatePaginationValues(totalPages, value);
 
   return (
-    <>
-      <Stack direction="row" spacing={2}>
-        <Stack>
-          <Button onClick={handleFirst} disabled={value === 1}>
-            <Typography>First</Typography>
-          </Button>
-        </Stack>
-        <Stack direction="row" spacing={1}>
-          {numbers.map((item) =>
-            item === "..." ? (
-              <Typography>{item}</Typography>
-            ) : (
-              <Button onClick={() => handleChange(1, item)}>
-                <Typography>{item}</Typography>
-              </Button>
-            )
-          )}
-        </Stack>
-        <Stack>
-          <Button onClick={handleLast} disabled={value === totalPages}>
-            <Typography>Last</Typography>
-          </Button>
-        </Stack>
+    <Stack direction="row" spacing={2} justifyContent="center">
+      <Stack>
+        <NavigationButton
+          disableRipple
+          onClick={handleFirst}
+          disabled={value === 1}
+        >
+          <Typography>First</Typography>
+        </NavigationButton>
       </Stack>
-      <Pagination
-        page={value}
-        onChange={handleChange}
-        count={totalPages}
-        showFirstButton
-        showLastButton
-        hidePrevButton
-        hideNextButton
-        boundaryCount={0}
-        renderItem={(item) => (
-          <PaginationItem
-            {...item}
-            components={{
-              first: () => <Typography>First</Typography>,
-              last: () => <Typography>Last</Typography>,
-            }}
-          />
+      <Stack direction="row" alignItems="center">
+        {numbers.map((item) =>
+          item === "..." ? (
+            <HiddenPages key={item}>{item}</HiddenPages>
+          ) : (
+            <PageButton
+              key={item}
+              disableRipple
+              isCurrent={item === value}
+              onClick={() => handleChange(item)}
+            >
+              <Typography>{item}</Typography>
+            </PageButton>
+          )
         )}
-      />
-    </>
+      </Stack>
+      <Stack>
+        <NavigationButton
+          disableRipple
+          onClick={handleLast}
+          disabled={value === totalPages}
+        >
+          <Typography>Last</Typography>
+        </NavigationButton>
+      </Stack>
+    </Stack>
   );
 };

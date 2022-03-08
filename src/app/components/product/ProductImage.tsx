@@ -25,9 +25,9 @@ export const ProductImage: React.VFC<ProductImageProps> = ({
   promo,
 }) => {
   return (
-    <>
+    <div style={{ position: "relative" }}>
       {promo && <PromoFlag>Promo</PromoFlag>}
       <CardMedia component="img" height={height} image={image} />
-    </>
+    </div>
   );
 };

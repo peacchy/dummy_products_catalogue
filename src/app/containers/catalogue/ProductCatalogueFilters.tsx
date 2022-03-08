@@ -24,7 +24,9 @@ export const ProductCatalogueFilters: React.VFC<
 }) => {
   return (
     <Stack direction="row" spacing={3}>
-      <Search value={searchValue} onChange={setSearchValue} />
+      <Stack flexGrow={1} maxWidth={500}>
+        <Search value={searchValue} onChange={setSearchValue} />
+      </Stack>
       <CheckboxField
         label="Active"
         value={activeValue}

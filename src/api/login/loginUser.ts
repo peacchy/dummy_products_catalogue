@@ -1,3 +1,4 @@
+import { ResponseErrorDto } from "api/ResponseErrorDto";
 import { LoginResponseDto } from "./dto/LoginResponseDto";
 
 export interface Credentials {
@@ -22,6 +23,8 @@ export const loginUser = async (
         return response;
       }
 
-      throw new Error(response);
+      const error = response as ResponseErrorDto;
+
+      throw new Error(error.message);
     });
 };

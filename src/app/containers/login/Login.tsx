@@ -1,9 +1,9 @@
-import { Button, styled, TextField, Typography } from "@mui/material";
+import { Button, Stack, styled, TextField, Typography } from "@mui/material";
 import { loginUser } from "api/login/loginUser";
 import { ResponseErrorDto } from "api/ResponseErrorDto";
 import { UserContext } from "providers/UserProvider";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { AppRoute } from "routing/AppRoute.enum";
 
@@ -39,6 +39,7 @@ export const Login: React.VFC = () => {
 
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const handleLogin = () => {
     loginUser({ username, password })
@@ -49,8 +50,8 @@ export const Login: React.VFC = () => {
           accessToken: response.access_token,
         });
       })
-      .catch((error: ResponseErrorDto) => {
-        console.log(error);
+      .catch((error: Error) => {
+        setError(error.message);
       });
   };
 
@@ -67,37 +68,34 @@ export const Login: React.VFC = () => {
       <img src="https://picsum.photos/604/1024"></img>
       <LoginPanel>
         <Header>Login</Header>
+        {error}
         <form>
-          <div>
-            <Typography>Username:</Typography>
-            <Input
-              name="username"
-              size="small"
-              placeholder="Enter username"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-          </div>
-          <div>
-            <Typography>Password:</Typography>
-            <Input
-              name="password"
-              type="password"
-              size="small"
-              placeholder="Enter password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <Link to={AppRoute.home} style={{ textDecoration: "none" }}>
-            <LoginButton
-              type="submit"
-              variant="contained"
-              onClick={handleLogin}
-            >
-              Log in
-            </LoginButton>
-          </Link>
+          <Stack spacing={3}>
+            <Stack spacing={1}>
+              <Typography>Username:</Typography>
+              <Input
+                name="username"
+                size="small"
+                placeholder="Enter username"
+                value={username}
+                onChange={handleUsernameChange}
+              />
+            </Stack>
+            <Stack spacing={1}>
+              <Typography>Password:</Typography>
+              <Input
+                name="password"
+                type="password"
+                size="small"
+                placeholder="Enter password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </Stack>
+          </Stack>
+          <LoginButton variant="contained" onClick={handleLogin}>
+            Log in
+          </LoginButton>
         </form>
         <ForgotPassword>Forgot password?</ForgotPassword>
       </LoginPanel>

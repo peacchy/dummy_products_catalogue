@@ -29,7 +29,7 @@ export const CheckboxField: VFC<CheckboxProps> = ({
         value={value}
         onChange={handleChange}
       />
-      <Typography>{label}</Typography>
+      <Typography fontSize={14}>{label}</Typography>
     </Stack>
   );
 };

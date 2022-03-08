@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { VFC } from "react";
 import { styled } from "@mui/material/styles";
-import { Button, Card, Rating, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, Rating, Stack, Typography } from "@mui/material";
 import { ProductImage } from "./ProductImage";
 import { DescriptionModal } from "../modal/DescriptionModal";
 
@@ -66,21 +66,16 @@ export const ProductCard: VFC<ProductCardProps> = ({
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
 
-  const cardHeight = 400;
-  const mediaHeight = 170;
-  const contentPaddingTop = 16;
-  const contentPaddingBottom = 24;
-  const contentHeight =
-    cardHeight - (mediaHeight + (contentPaddingBottom + contentPaddingTop));
-
   return (
-    <>
-      <Card sx={{ width: 288, height: cardHeight, position: "relative" }}>
-        <ProductImage image={image} promo={promo} height={mediaHeight} />
-        <Stack
-          height={`${contentHeight}px`}
+    <Box>
+      <Card>
+        <ProductImage image={image} promo={promo} height={100} />
+        <Box
+          display="flex"
+          flexDirection="column"
           justifyContent="space-between"
-          padding={`${contentPaddingTop}px 16px ${contentPaddingBottom}px`}
+          padding={3}
+          height={150}
         >
           <Stack>
             <Title gutterBottom>{name}</Title>
@@ -98,7 +93,7 @@ export const ProductCard: VFC<ProductCardProps> = ({
               </DisabledButton>
             )}
           </Stack>
-        </Stack>
+        </Box>
       </Card>
       <DescriptionModal
         name={name}
@@ -107,6 +102,6 @@ export const ProductCard: VFC<ProductCardProps> = ({
         isOpen={isOpen}
         onClose={close}
       />
-    </>
+    </Box>
   );
 };
