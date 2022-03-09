@@ -4,6 +4,7 @@ import { UserMenu } from "../user/UserMenu";
 import { UserContext } from "providers/UserProvider";
 import { useContext } from "react";
 import { LoginButton } from "app/components/inputs/LoginButton";
+import { Logo } from "app/components/logo/Logo";
 
 const Header = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -15,12 +16,12 @@ const Header = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Logo = styled(Typography)(({ theme }) => ({
-  fontSize: 24,
-  [theme.breakpoints.down("md")]: {
-    order: 1,
-  },
-}));
+// const Logo = styled(Typography)(({ theme }) => ({
+//   fontSize: 24,
+//   [theme.breakpoints.down("md")]: {
+//     order: 1,
+//   },
+// }));
 
 const Filters = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
@@ -34,13 +35,19 @@ const Login = styled(Stack)(({ theme }) => ({
   },
 }));
 
+const CompanyLogo = styled(Logo)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    order: 1,
+  },
+}));
+
 export const ProductCatalogueHeader: React.FC = ({ children }) => {
   const { user, clearUser } = useContext(UserContext);
 
   return (
     <Header>
       <Stack alignItems="center" flexGrow={2}>
-        <Logo noWrap>join.tsh.io</Logo>
+        <CompanyLogo>join.tsh.io</CompanyLogo>
       </Stack>
       <Filters flexGrow={4}>{children}</Filters>
       <Login alignItems="center" flexGrow={2}>

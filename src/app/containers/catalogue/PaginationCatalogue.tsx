@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Stack, styled, Typography } from "@mui/material";
-import { generatePaginationValues } from "./generatePaginationValues";
+import { generatePaginationValues } from "../../helpers/generatePaginationValues";
 
 const Pagination = styled(Stack)(({ theme }) => ({
   // marginLeft: "16px",
