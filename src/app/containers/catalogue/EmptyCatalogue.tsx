@@ -8,12 +8,16 @@ const Empty = styled(Paper)(({ theme }) => ({
   width: "600px",
   height: "344px",
   margin: "auto",
+  marginTop: theme.spacing(7),
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  //   flexGrow: 0,
-  //   flexShrink: 0,
+
+  [theme.breakpoints.down("md")]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+  },
 }));
 
 const Header = styled(Typography)(({ theme }) => ({

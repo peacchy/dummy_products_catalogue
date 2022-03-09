@@ -2,12 +2,16 @@ import React from "react";
 import { Button, Stack, styled, Typography } from "@mui/material";
 import { generatePaginationValues } from "./generatePaginationValues";
 
-interface PageButtonProps {
-  isCurrent: boolean;
-}
+const Pagination = styled(Stack)(({ theme }) => ({
+  // marginLeft: "16px",
+  [theme.breakpoints.down("md")]: {
+    // marginLeft: 0,
+    // paddingLeft: 0,
+  },
+}));
 
 const PageButton = styled(Button)<PageButtonProps>(({ isCurrent }) => ({
-  color: isCurrent ? "red" : "#1A1B1D",
+  color: isCurrent ? "#4460F7" : "#1A1B1D",
   minWidth: "10px",
   "&.MuiButtonBase-root:hover": {
     backgroundColor: "transparent",
@@ -16,6 +20,9 @@ const PageButton = styled(Button)<PageButtonProps>(({ isCurrent }) => ({
 
 const HiddenPages = styled(Typography)(({ theme }) => ({
   padding: "0px 16px",
+  [theme.breakpoints.down("md")]: {
+    padding: "0px 8px",
+  },
 }));
 
 const NavigationButton = styled(Button)(({ theme }) => ({
@@ -25,6 +32,10 @@ const NavigationButton = styled(Button)(({ theme }) => ({
     backgroundColor: "transparent",
   },
 }));
+
+interface PageButtonProps {
+  isCurrent: boolean;
+}
 
 interface PaginationCatalogueProps {
   totalPages: number;

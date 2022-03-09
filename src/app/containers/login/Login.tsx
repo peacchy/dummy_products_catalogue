@@ -1,9 +1,17 @@
-import { Button, Stack, styled, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Stack,
+  styled,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { loginUser } from "api/login/loginUser";
 import { ResponseErrorDto } from "api/ResponseErrorDto";
 import { UserContext } from "providers/UserProvider";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import sideImage from "../../../assets/Login.jpg";
 
 import { AppRoute } from "routing/AppRoute.enum";
 
@@ -63,9 +71,14 @@ export const Login: React.VFC = () => {
     setPassword(event.target.value);
   };
 
+  const image = <img src="https://picsum.photos/604/1024"></img>;
+
   return (
     <LoginPage>
-      <img src="https://picsum.photos/604/1024"></img>
+      <Box>
+        <img src={sideImage} />
+      </Box>
+
       <LoginPanel>
         <Header>Login</Header>
         {error}

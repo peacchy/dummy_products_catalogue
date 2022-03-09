@@ -20,7 +20,7 @@ export const ProductCatalogue: React.VFC<ProductCatalogueProps> = ({
   onPageChange,
 }) => {
   if (!products.length) {
-    <EmptyCatalogue />;
+    return <EmptyCatalogue />;
   }
 
   return (

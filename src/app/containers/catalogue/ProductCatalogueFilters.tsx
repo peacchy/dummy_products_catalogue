@@ -1,7 +1,20 @@
-import { Stack } from "@mui/material";
+import { Stack, styled } from "@mui/material";
 import { CheckboxField } from "app/components/checkbox/CheckboxField";
 import { Search } from "app/components/search/Search";
 import React, { useState } from "react";
+
+const Filters = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    flexWrap: "wrap",
+  },
+}));
+
+const SearchFilter = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+    margin: theme.spacing(3),
+  },
+}));
 
 interface ProductCatalogueFiltersProps {
   searchValue: string;
@@ -23,10 +36,10 @@ export const ProductCatalogueFilters: React.VFC<
   setPromoValue,
 }) => {
   return (
-    <Stack direction="row" spacing={3}>
-      <Stack flexGrow={1} maxWidth={500}>
+    <Filters direction="row" spacing={3}>
+      <SearchFilter flexGrow={1} maxWidth={500}>
         <Search value={searchValue} onChange={setSearchValue} />
-      </Stack>
+      </SearchFilter>
       <CheckboxField
         label="Active"
         value={activeValue}
@@ -37,6 +50,6 @@ export const ProductCatalogueFilters: React.VFC<
         value={promoValue}
         onChange={setPromoValue}
       />
-    </Stack>
+    </Filters>
   );
 };

@@ -9,28 +9,28 @@ const ActionButton = styled(Button)({
   width: "100%",
   backgroundColor: "#4460F7",
   textTransform: "none",
+  "&:hover": {
+    backgroundColor: "#2140E8",
+  },
 });
 
 const DisabledButton = styled(Button)({
   width: "100%",
   textTransform: "none",
-  // color: "white",
-  // backgroundColor: "#9194A5",
-
-  // "& .Mui-disabled": {
-  //   color: "white",
-  //   backgroundColor: "#9194A5",
-  // },
+  "&:disabled": {
+    color: "white",
+    backgroundColor: "#9194A5",
+  },
 });
 
 const Title = styled(Typography)({
-  fontSize: 18,
+  fontSize: 16,
   fontWeight: 600,
   color: "#1A1B1D",
 });
 
 const Description = styled(Typography)({
-  fontSize: 14,
+  fontSize: 12,
   fontWeight: 600,
   color: "#9194A5",
 });
@@ -68,7 +68,7 @@ export const ProductCard: VFC<ProductCardProps> = ({
 
   return (
     <Box>
-      <Card>
+      <Card elevation={0}>
         <ProductImage image={image} promo={promo} height={100} />
         <Box
           display="flex"
@@ -84,11 +84,15 @@ export const ProductCard: VFC<ProductCardProps> = ({
           <Stack spacing="18px">
             <RatingStars name="read-only" value={rating} readOnly />
             {active ? (
-              <ActionButton onClick={open} variant="contained">
+              <ActionButton disableElevation onClick={open} variant="contained">
                 Show details
               </ActionButton>
             ) : (
-              <DisabledButton disabled={true} variant="contained">
+              <DisabledButton
+                disableElevation
+                disabled={true}
+                variant="contained"
+              >
                 Unavailable
               </DisabledButton>
             )}
