@@ -57,7 +57,11 @@ export const DescriptionModal: VFC<DescriptionModalProps> = ({
   onClose,
 }) => {
   return (
-    <ModalWindow open={isOpen} onClose={onClose}>
+    <ModalWindow
+      open={isOpen}
+      onClose={onClose}
+      data-testid="product-details-modal"
+    >
       <Content>
         <CloseButton>
           <IconButton size="small">

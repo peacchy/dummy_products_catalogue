@@ -44,7 +44,12 @@ export const ProductCataloguePage: React.VFC = () => {
   }, [searchValue, activeValue, promoValue, currentPageValue]);
 
   return (
-    <Box height="100vh" display="flex" flexDirection="column">
+    <Box
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      data-testid="product-catalogue-page"
+    >
       <ProductCatalogueHeader>
         <ProductCatalogueFilters
           searchValue={searchValue}

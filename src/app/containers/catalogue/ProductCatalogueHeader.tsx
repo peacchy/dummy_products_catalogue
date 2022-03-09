@@ -3,7 +3,7 @@ import { Box, Stack, styled, Typography } from "@mui/material";
 import { UserMenu } from "../user/UserMenu";
 import { UserContext } from "providers/UserProvider";
 import { useContext } from "react";
-import { LoginButton } from "app/components/inputs/LoginButton";
+import { LoginButton } from "app/components/loginbutton/LoginButton";
 import { Logo } from "app/components/logo/Logo";
 
 const Header = styled(Box)(({ theme }) => ({

@@ -38,7 +38,7 @@ const Icon = styled(NoteIcon)(({ theme }) => ({
 
 export const EmptyCatalogue = () => {
   return (
-    <Empty elevation={0}>
+    <Empty elevation={0} data-testid="empty-catalogue">
       <Icon />
       <Header>Ooops... It's empty here</Header>
       <Description>There are no products on the list</Description>

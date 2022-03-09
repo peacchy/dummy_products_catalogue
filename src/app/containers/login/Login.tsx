@@ -46,6 +46,14 @@ const Input = styled(TextField)({
   width: "100%",
 });
 
+const CompanyLogo = styled(Link)({
+  textDecoration: "none",
+  color: "#1A1B1D",
+  "&:hover &:visited &:active": {
+    color: "inherit",
+  },
+});
+
 const ForgotPassword = styled(Button)({
   textDecoration: "underline",
   textTransform: "none",
@@ -105,7 +113,9 @@ export const Login: React.VFC = () => {
         <img src={sideImage} />
       </Image>
       <LoginPanel spacing={15}>
-        <Logo>join.tsh.io</Logo>
+        <CompanyLogo to={AppRoute.home}>
+          <Logo>join.tsh.io</Logo>
+        </CompanyLogo>
         <form>
           <Stack spacing={7}>
             <Header>Login</Header>

@@ -24,7 +24,7 @@ export const ProductCatalogue: React.VFC<ProductCatalogueProps> = ({
   }
 
   return (
-    <Box height="100%">
+    <Box height="100%" data-testid="product-catalogue">
       <Grid
         container
         rowSpacing={3}
@@ -33,8 +33,13 @@ export const ProductCatalogue: React.VFC<ProductCatalogueProps> = ({
         paddingX={12}
         columns={{ xs: 1, sm: 2, md: 3, lg: 4 }}
       >
-        {products.map((product) => (
-          <Grid item key={product.id} xs={1}>
+        {products.map((product, index) => (
+          <Grid
+            item
+            key={product.id}
+            xs={1}
+            data-testid={`product-card-${index}`}
+          >
             <ProductCard
               description={product.description}
               image={product.image}

@@ -84,7 +84,12 @@ export const ProductCard: VFC<ProductCardProps> = ({
           <Stack spacing="18px">
             <RatingStars name="read-only" value={rating} readOnly />
             {active ? (
-              <ActionButton disableElevation onClick={open} variant="contained">
+              <ActionButton
+                disableElevation
+                onClick={open}
+                variant="contained"
+                data-testid="show-details-button"
+              >
                 Show details
               </ActionButton>
             ) : (
