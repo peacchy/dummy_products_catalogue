@@ -70,20 +70,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## What might have been done better
-
-- Better UI styling
-
-  - Provided design was not prepared for 16:9 display. I tried to make it look decent, but it can use more styling.
-  - I didn't wanted to postopne sending this any further, that is why I may missed something.
-
-- Better and more meaningfull tests
-
-  - I'm still learning how to write better tests. Please provide me with a lot of feedback!
-
-- Better error handling
-  - I feel like error handling on login could be better.
-
 ![This is an image](/src/assets/honest_work.jpg)
-
-## Either way I hope we can work together in the future! :D
