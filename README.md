@@ -1,27 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and modified by TSH team for the recruit process.
+Welcome to simple product catalogue app!
+
+> Repository template is forked from here:
+> https://github.com/TheSoftwareHouse/react-interview-starter-ts
 
 ## Quick Start
 
-To start the development:
-
 ```
-mkdir new-project
 cd new-project/
-git clone git@github.com:TheSoftwareHouse/react-interview-starter-ts.git .
-rm -r .git
 npm install
 cd e2e
 npm install
-cd ..
-cp .env.dist .env
-cp .env.e2e.dist ./e2e/.env
 ```
-
-where `new-project` is your desired folder.
-
-## E2E
-
-For E2E testing we are using the [Cypress](https://www.cypress.io/) framework. If you don't need it just remove e2e directory.
 
 ## Available Scripts
 
@@ -30,6 +19,14 @@ In the project directory, you can run:
 ### `e2e:run`
 
 Runs Cypress E2E tests in a headless mode (the browser window is not visible)
+
+### `e2e:run:firefox`
+
+Runs Cypress E2E tests in firefox browser in a headless mode (the browser window is not visible)
+
+### `e2e:run:chrome`
+
+Runs Cypress E2E tests in chrome browser ina headless mode (the browser window is not visible)
 
 ### `e2e:open`
 
@@ -73,8 +70,20 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## What might have been done better
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Better UI styling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - Provided design was not prepared for 16:9 display. I tried to make it look decent, but it can use more styling.
+  - I didn't wanted to postopne sending this any further that is why I may missed something.
+
+- Better and more meaningfull tests
+
+  - I'm still learning how to write better tests. Please provide me with a lot of feedback!
+
+- Better error handling
+  - I feel like error handling on login isn't good.
+
+![This is an image](/src/assets/honest_work.jpg)
+
+## Either way I hope we can work together in the future! :D
