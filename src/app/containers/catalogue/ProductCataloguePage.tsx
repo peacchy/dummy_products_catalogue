@@ -6,12 +6,11 @@ import React, { useEffect, useState } from "react";
 import { ProductCatalogueHeader } from "./ProductCatalogueHeader";
 import { ProductCatalogue } from "./ProductCatalogue";
 import { ProductCatalogueFilters } from "./ProductCatalogueFilters";
-import { PaginationCatalogue } from "./PaginationCatalogue";
 import { Loading } from "app/components/loading/Loading";
 
-const CatalogueWrapper = styled(Box)(({ theme }) => ({
+const CatalogueWrapper = styled(Box)({
   backgroundColor: "#F2F2F2",
-}));
+});
 
 export const ProductCataloguePage: React.VFC = () => {
   const [searchValue, setSearchValue] = useState<string>("");

@@ -3,11 +3,8 @@ import { Button, Stack, styled, Typography } from "@mui/material";
 import { generatePaginationValues } from "../../helpers/generatePaginationValues";
 
 const Pagination = styled(Stack)(({ theme }) => ({
-  // marginLeft: "16px",
-  [theme.breakpoints.down("md")]: {
-    // marginLeft: 0,
-    // paddingLeft: 0,
-  },
+  marginBottom: theme.spacing(2),
+  justifyContent: "center",
 }));
 
 const PageButton = styled(Button)<PageButtonProps>(({ isCurrent }) => ({
@@ -19,19 +16,20 @@ const PageButton = styled(Button)<PageButtonProps>(({ isCurrent }) => ({
 }));
 
 const HiddenPages = styled(Typography)(({ theme }) => ({
-  padding: "0px 16px",
+  padding: theme.spacing(0, 2),
   [theme.breakpoints.down("md")]: {
-    padding: "0px 8px",
+    padding: theme.spacing(0, 1),
   },
 }));
 
-const NavigationButton = styled(Button)(({ theme }) => ({
+const NavigationButton = styled(Button)({
   textTransform: "none",
+  minWidth: "10px",
   color: "#1A1B1D",
   "&.MuiButtonBase-root:hover": {
     backgroundColor: "transparent",
   },
-}));
+});
 
 interface PageButtonProps {
   isCurrent: boolean;
@@ -99,6 +97,6 @@ export const PaginationCatalogue: React.VFC<PaginationCatalogueProps> = ({
           <Typography>Last</Typography>
         </NavigationButton>
       </Stack>
-    </Stack>
+    </Pagination>
   );
 };

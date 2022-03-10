@@ -1,17 +1,17 @@
 import { CardMedia, styled, Typography } from "@mui/material";
 import React from "react";
 
-const PromoFlag = styled(Typography)({
+const PromoFlag = styled(Typography)(({ theme }) => ({
   backgroundColor: "#F9A52B",
   color: "#FFFFFF",
   position: "absolute",
   textAlign: "center",
-  width: 75,
-  height: 24,
-  top: 16,
+  width: "75px",
+  height: "24px",
+  top: theme.spacing(2),
   fontWeight: 500,
-  fontSize: 14,
-});
+  fontSize: theme.typography.pxToRem(14),
+}));
 
 interface ProductImageProps {
   image: string;

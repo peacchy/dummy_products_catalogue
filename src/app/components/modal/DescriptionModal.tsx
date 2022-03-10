@@ -1,8 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   IconButton,
@@ -12,34 +10,29 @@ import {
 } from "@mui/material";
 import React, { useState, VFC } from "react";
 
-const ModalWindow = styled(Modal)(({ theme }) => ({
+const ModalWindow = styled(Modal)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-}));
+});
 
-const Content = styled(Card)(({ theme }) => ({
+const Content = styled(Card)({
   width: "600px",
   height: "530px",
   borderRadius: 8,
-}));
+});
 
-const CloseButton = styled(IconButton)(({ theme }) => ({
+const CloseButton = styled(IconButton)({
   position: "absolute",
-}));
+});
 
 const Information = styled(CardContent)(({ theme }) => ({
   margin: theme.spacing(2),
 }));
 
-const Header = styled(Typography)(({ theme }) => ({
-  // fontSize: 24,
-}));
-
-const Description = styled(Typography)(({ theme }) => ({
-  // fontSize: 18,
+const Description = styled(Typography)({
   color: "#9194A5",
-}));
+});
 
 interface DescriptionModalProps {
   description: string;

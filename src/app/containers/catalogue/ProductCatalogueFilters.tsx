@@ -1,7 +1,7 @@
 import { Stack, styled } from "@mui/material";
 import { CheckboxField } from "app/components/checkbox/CheckboxField";
 import { Search } from "app/components/search/Search";
-import React, { useState } from "react";
+import React from "react";
 
 const Filters = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
@@ -42,11 +42,13 @@ export const ProductCatalogueFilters: React.VFC<
       </SearchFilter>
       <CheckboxField
         label="Active"
+        filterName="active"
         value={activeValue}
         onChange={setActiveValue}
       />
       <CheckboxField
         label="Promo"
+        filterName="promo"
         value={promoValue}
         onChange={setPromoValue}
       />

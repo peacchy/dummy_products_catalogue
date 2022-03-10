@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, styled } from "@mui/material";
 import { UserMenu } from "../user/UserMenu";
 import { UserContext } from "providers/UserProvider";
 import { useContext } from "react";
@@ -15,13 +15,6 @@ const Header = styled(Box)(({ theme }) => ({
     flexWrap: "wrap",
   },
 }));
-
-// const Logo = styled(Typography)(({ theme }) => ({
-//   fontSize: 24,
-//   [theme.breakpoints.down("md")]: {
-//     order: 1,
-//   },
-// }));
 
 const Filters = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {

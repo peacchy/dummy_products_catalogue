@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Paper, styled, Typography } from "@mui/material";
+import { Paper, styled, Typography } from "@mui/material";
 
 import { ReactComponent as NoteIcon } from "../../../assets/Note.svg";
 
@@ -21,12 +21,12 @@ const Empty = styled(Paper)(({ theme }) => ({
 }));
 
 const Header = styled(Typography)(({ theme }) => ({
-  fontSize: 18,
+  fontSize: theme.typography.pxToRem(18),
   marginBottom: theme.spacing(1),
 }));
 
 const Description = styled(Typography)(({ theme }) => ({
-  fontSize: 14,
+  fontSize: theme.typography.pxToRem(14),
   color: "#9194A5",
 }));
 
@@ -36,7 +36,7 @@ const Icon = styled(NoteIcon)(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
 
-export const EmptyCatalogue = () => {
+export const EmptyCatalogue: React.VFC = () => {
   return (
     <Empty elevation={0} data-testid="empty-catalogue">
       <Icon />

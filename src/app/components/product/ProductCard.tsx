@@ -18,32 +18,32 @@ const DisabledButton = styled(Button)({
   width: "100%",
   textTransform: "none",
   "&:disabled": {
-    color: "white",
+    color: "#FFFFFF",
     backgroundColor: "#9194A5",
   },
 });
 
-const Title = styled(Typography)({
-  fontSize: 16,
+const Title = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(16),
   fontWeight: 600,
   color: "#1A1B1D",
-});
+}));
 
-const Description = styled(Typography)({
-  fontSize: 12,
+const Description = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(12),
   fontWeight: 600,
   color: "#9194A5",
-});
+}));
 
-const RatingStars = styled(Rating)({
-  fontSize: 15,
+const RatingStars = styled(Rating)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(15),
   "& .MuiRating-icon": {
-    margin: "0 4px",
+    margin: theme.spacing(0, 0.5),
   },
   "& .MuiRating-iconFilled": {
     color: "#F9A52B",
   },
-});
+}));
 
 export interface ProductCardProps {
   description: string;
