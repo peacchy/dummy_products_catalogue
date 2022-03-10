@@ -13,23 +13,19 @@ export const UserMenu: React.VFC<UserMenuProps> = ({ user, onLogout }) => {
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    React.useState<null | HTMLElement>(null);
-
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
   const handleLogout = () => {
     onLogout();
+    handleCloseMenu();
+  };
+
+  const handleCloseMenu = () => {
     setAnchorEl(null);
-    handleMobileMenuClose();
   };
 
   return (
@@ -52,9 +48,9 @@ export const UserMenu: React.VFC<UserMenuProps> = ({ user, onLogout }) => {
           horizontal: "right",
         }}
         open={isMenuOpen}
-        onClose={handleLogout}
+        onClose={handleCloseMenu}
       >
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
       </Menu>
     </>
   );

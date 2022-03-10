@@ -18,13 +18,24 @@ export const loginUser = async (
   })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
-      if (response.statusCode >= 200 && response.statusCode < 300) {
-        return response;
+      if (isError(response)) {
+        const error = response as ResponseErrorDto;
+
+        throw new Error(error.message);
       }
 
-      const error = response as ResponseErrorDto;
-
-      throw new Error(error.message);
+      return response;
     });
+};
+
+const isError = <T>(
+  response: T | ResponseErrorDto
+): response is ResponseErrorDto => {
+  for (let [key, value] of Object.entries(response)) {
+    if (key === "statusCode" && (value < 200 || value > 300)) {
+      return true;
+    }
+  }
+
+  return false;
 };

@@ -5,6 +5,7 @@ import { createContext, useState } from "react";
 
 interface IUserContext {
   user?: User;
+  isLoggedIn: boolean;
   saveUser: (user: User) => void;
   clearUser: () => void;
 }
@@ -15,12 +16,15 @@ export const UserContext = createContext<IUserContext>({
     avatar: "",
     accessToken: "",
   },
+  isLoggedIn: false,
   saveUser: () => {},
   clearUser: () => {},
 });
 
 export const UserProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User>();
+
+  const isLoggedIn = Boolean(user ?? localStorage.getItem("user"));
 
   useEffect(() => {
     const serializedUser = localStorage.getItem("user");
@@ -43,7 +47,7 @@ export const UserProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, saveUser, clearUser }}>
+    <UserContext.Provider value={{ user, isLoggedIn, saveUser, clearUser }}>
       {children}
     </UserContext.Provider>
   );

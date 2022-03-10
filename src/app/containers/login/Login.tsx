@@ -4,20 +4,18 @@ import {
   Stack,
   styled,
   TextField,
-  ThemeProvider,
   Typography,
 } from "@mui/material";
 import { loginUser } from "api/login/loginUser";
-import { ResponseErrorDto } from "api/ResponseErrorDto";
 import { UserContext } from "providers/UserProvider";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import sideImage from "../../../assets/Login.jpg";
 import meme from "../../../assets/meme.jpg";
 
 import { AppRoute } from "routing/AppRoute.enum";
 import { Logo } from "app/components/logo/Logo";
-import { EmojiEmotions } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 
 const LoginPage = styled("div")(({ theme }) => ({
   display: "flex",
@@ -33,11 +31,11 @@ const LoginPanel = styled(Stack)(({ theme }) => ({
   },
 }));
 
-const Header = styled(Typography)({
-  fontSize: 30,
-});
+const Header = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(30),
+}));
 
-const LoginButton = styled(Button)({
+const LoginButton = styled(LoadingButton)({
   textTransform: "none",
   width: "100%",
 });
@@ -54,19 +52,21 @@ const CompanyLogo = styled(Link)({
   },
 });
 
-const ForgotPassword = styled(Button)({
+const ForgotPassword = styled(Button)(({ theme }) => ({
   textDecoration: "underline",
   textTransform: "none",
   color: "#9194A5",
-  fontSize: 14,
+  fontSize: theme.typography.pxToRem(14),
   width: "113px",
   padding: 0,
   "&:hover": {
     backgroundColor: "transparent",
   },
-});
+}));
 
 const Image = styled(Box)(({ theme }) => ({
+  display: "flex",
+  maxHeight: "100vh",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
@@ -78,14 +78,25 @@ const ErrorMessage = styled(Typography)(({ theme }) => ({
 }));
 
 export const Login: React.VFC = () => {
-  const { saveUser } = useContext(UserContext);
+  const { isLoggedIn, saveUser } = useContext(UserContext);
 
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isMeme, setIsMeme] = useState<boolean>(false);
 
+  const history = useHistory();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      history.push(AppRoute.home);
+    }
+  }, []);
+
   const handleLogin = () => {
+    setIsLoading(true);
+
     loginUser({ username, password })
       .then((response) => {
         saveUser({
@@ -93,9 +104,14 @@ export const Login: React.VFC = () => {
           avatar: response.user.avatar,
           accessToken: response.access_token,
         });
+
+        history.push(AppRoute.home);
       })
       .catch((error: Error) => {
         setError(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -110,7 +126,7 @@ export const Login: React.VFC = () => {
   return (
     <LoginPage>
       <Image>
-        <img src={sideImage} data-testid="meme" />
+        <img src={sideImage} />
       </Image>
       <LoginPanel spacing={15}>
         <CompanyLogo to={AppRoute.home}>
@@ -144,13 +160,19 @@ export const Login: React.VFC = () => {
             </Stack>
             <Stack spacing={2}>
               <ErrorMessage variant="caption">{error}</ErrorMessage>
-              <LoginButton variant="contained" onClick={handleLogin}>
+              <LoginButton
+                variant="contained"
+                onClick={handleLogin}
+                loading={isLoading}
+              >
                 Log in
               </LoginButton>
               <ForgotPassword disableRipple onClick={() => setIsMeme(!isMeme)}>
                 Forgot password?
               </ForgotPassword>
-              {isMeme && <img width="220" height="150" src={meme} />}
+              {isMeme && (
+                <img width="220" height="150" src={meme} data-testid="meme" />
+              )}
             </Stack>
           </Stack>
         </form>
