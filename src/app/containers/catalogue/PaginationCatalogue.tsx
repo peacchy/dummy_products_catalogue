@@ -63,7 +63,7 @@ export const PaginationCatalogue: React.VFC<PaginationCatalogueProps> = ({
   const numbers = generatePaginationValues(totalPages, value);
 
   return (
-    <Stack direction="row" spacing={2} justifyContent="center">
+    <Pagination direction="row" spacing={2} data-testid="catalogue-pagination">
       <Stack>
         <NavigationButton
           disableRipple
@@ -83,6 +83,7 @@ export const PaginationCatalogue: React.VFC<PaginationCatalogueProps> = ({
               disableRipple
               isCurrent={item === value}
               onClick={() => handleChange(item)}
+              data-testid={`pagination-page-${item}`}
             >
               <Typography>{item}</Typography>
             </PageButton>

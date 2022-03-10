@@ -110,14 +110,14 @@ export const Login: React.VFC = () => {
   return (
     <LoginPage>
       <Image>
-        <img src={sideImage} />
+        <img src={sideImage} data-testid="meme" />
       </Image>
       <LoginPanel spacing={15}>
         <CompanyLogo to={AppRoute.home}>
           <Logo>join.tsh.io</Logo>
         </CompanyLogo>
         <form>
-          <Stack spacing={7}>
+          <Stack spacing={6}>
             <Header>Login</Header>
             <Stack spacing={3}>
               <Stack spacing={1}>

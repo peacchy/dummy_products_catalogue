@@ -22,7 +22,11 @@ export const CheckboxField: VFC<CheckboxProps> = ({
     onChange(event.target.checked);
   };
   return (
-    <Stack direction="row" alignItems="center">
+    <Stack
+      direction="row"
+      alignItems="center"
+      data-testid={`checkbox-filter-${filterName}`}
+    >
       <Checkbox
         icon={<CheckboxEmptyIcon />}
         checkedIcon={<CheckboxFullIcon />}
