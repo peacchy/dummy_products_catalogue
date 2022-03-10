@@ -75,14 +75,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - Better UI styling
 
   - Provided design was not prepared for 16:9 display. I tried to make it look decent, but it can use more styling.
-  - I didn't wanted to postopne sending this any further that is why I may missed something.
+  - I didn't wanted to postopne sending this any further, that is why I may missed something.
 
 - Better and more meaningfull tests
 
   - I'm still learning how to write better tests. Please provide me with a lot of feedback!
 
 - Better error handling
-  - I feel like error handling on login isn't good.
+  - I feel like error handling on login could be better.
 
 ![This is an image](/src/assets/honest_work.jpg)
 
