@@ -1,10 +1,17 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 import { Product } from "app/models/Product";
 import { ProductCard } from "app/components/product/ProductCard";
 import React from "react";
 
 import { EmptyCatalogue } from "./EmptyCatalogue";
 import { PaginationCatalogue } from "./PaginationCatalogue";
+
+const Products = styled(Grid)(({ theme }) => ({
+  padding: theme.spacing(7, 12),
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(5),
+  },
+}));
 
 interface ProductCatalogueProps {
   products: Product[];
@@ -25,12 +32,12 @@ export const ProductCatalogue: React.VFC<ProductCatalogueProps> = ({
 
   return (
     <Box height="100%" data-testid="product-catalogue">
-      <Grid
+      <Products
         container
         rowSpacing={3}
         columnSpacing={10}
-        paddingY={7}
-        paddingX={12}
+        // paddingY={7}
+        // paddingX={12}
         columns={{ xs: 1, sm: 2, md: 3, lg: 4 }}
       >
         {products.map((product, index) => (
@@ -50,7 +57,7 @@ export const ProductCatalogue: React.VFC<ProductCatalogueProps> = ({
             />
           </Grid>
         ))}
-      </Grid>
+      </Products>
       <PaginationCatalogue
         totalPages={totalPages}
         value={page}

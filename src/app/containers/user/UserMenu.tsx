@@ -1,7 +1,13 @@
-import { AccountCircle } from "@mui/icons-material";
-import { Avatar, IconButton, Menu, MenuItem } from "@mui/material";
+import { Avatar, Menu, MenuItem, styled } from "@mui/material";
 import { User } from "app/models/User";
 import React from "react";
+
+const LogoutButton = styled(MenuItem)(({ theme }) => ({
+  width: "185px",
+  "&.Mui-focusVisible": {
+    backgroundColor: "transparent",
+  },
+}));
 
 interface UserMenuProps {
   user: User;

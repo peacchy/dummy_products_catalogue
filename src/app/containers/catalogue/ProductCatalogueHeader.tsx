@@ -9,9 +9,9 @@ import { Logo } from "app/components/logo/Logo";
 const Header = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  flexBasis: "13%",
+  padding: theme.spacing(3),
   [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(3, 1),
     flexWrap: "wrap",
   },
 }));
