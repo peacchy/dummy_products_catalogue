@@ -7,8 +7,8 @@ const Pagination = styled(Stack)(({ theme }) => ({
   justifyContent: "center",
 }));
 
-const PageButton = styled(Button)<PageButtonProps>(({ isCurrent }) => ({
-  color: isCurrent ? "#4460F7" : "#1A1B1D",
+const PageButton = styled(Button)<PageButtonProps>(({ current }) => ({
+  color: current,
   minWidth: "10px",
   "&.MuiButtonBase-root:hover": {
     backgroundColor: "transparent",
@@ -32,7 +32,7 @@ const NavigationButton = styled(Button)({
 });
 
 interface PageButtonProps {
-  isCurrent: boolean;
+  current: string;
 }
 
 interface PaginationCatalogueProps {
@@ -79,7 +79,7 @@ export const PaginationCatalogue: React.VFC<PaginationCatalogueProps> = ({
             <PageButton
               key={item}
               disableRipple
-              isCurrent={item === value}
+              current={item === value ? "#4460F7" : "#1A1B1D"}
               onClick={() => handleChange(item)}
               data-testid={`pagination-page-${item}`}
             >
