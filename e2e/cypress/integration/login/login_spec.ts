@@ -11,6 +11,10 @@ describe("Login page", () => {
     cy.findByPlaceholderText(/enter username/i).type("daria");
     cy.findByPlaceholderText(/enter password/i).type("daria");
     cy.findByRole("button", { name: /log in/i }).click();
+    cy.wait(3000);
+    cy.location().should((loc) => {
+      expect(loc.href).to.eq(NavigationMenu.homeLink);
+    });
     cy.findByRole("img", { name: /daria/i }).should("be.visible");
   });
 
@@ -20,6 +24,8 @@ describe("Login page", () => {
     cy.findByPlaceholderText(/enter username/i).type("daria");
     cy.findByPlaceholderText(/enter password/i).type("test123");
     cy.findByRole("button", { name: /log in/i }).click();
+    cy.wait(3000);
+    cy.findByRole("button", { name: /log in/i }).should("not.be.disabled");
     cy.contains("Invalid user or password");
   });
 
@@ -29,6 +35,8 @@ describe("Login page", () => {
     cy.findByPlaceholderText(/enter username/i).type("test123");
     cy.findByPlaceholderText(/enter password/i).type("test123");
     cy.findByRole("button", { name: /log in/i }).click();
+    cy.wait(3000);
+    cy.findByRole("button", { name: /log in/i }).should("not.be.disabled");
     cy.contains("No user found");
   });
 
@@ -37,6 +45,8 @@ describe("Login page", () => {
     NavigationMenu.goToLogin();
     cy.findByPlaceholderText(/enter username/i).type("daria");
     cy.findByRole("button", { name: /log in/i }).click();
+    cy.wait(3000);
+    cy.findByRole("button", { name: /log in/i }).should("not.be.disabled");
     cy.contains("password must be longer than or equal to 3 characters");
   });
 
@@ -44,6 +54,8 @@ describe("Login page", () => {
     cy.clearSession();
     NavigationMenu.goToLogin();
     cy.findByRole("button", { name: /log in/i }).click();
+    cy.wait(3000);
+    cy.findByRole("button", { name: /log in/i }).should("not.be.disabled");
     cy.contains("password must be longer than or equal to 3 characters");
   });
 
